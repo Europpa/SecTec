@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>EuroSystem</title>
+	<title>Secundaria Tecnica 127</title>
 </head>
 <body>
 		
