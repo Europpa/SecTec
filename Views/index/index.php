@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Secundaria Tecnica 127</title>
+	<title>Secundaria Tecnica 129</title>
 </head>
 <body>
 		
@@ -17,7 +17,7 @@
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade in active" id="alumno">
 				<br>	
-					<h4 class="text-center">Ingrese los datos del alumno</h4>
+					<h4 class="text-center">Ingrese los datos del chaval</h4>
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
