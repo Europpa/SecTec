@@ -17,7 +17,7 @@
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade in active" id="alumno">
 				    <br>	
-					<h4 class="text-center">Acceso Alumno</h4>
+					<h4 class="text-center">Acceso AlumnoSS</h4>
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
@@ -41,7 +41,7 @@
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="administradores">	
 				    <br>	
-					<h4 class="text-center">Acceso Administrador</h4>
+					<h4 class="text-center">Acceso AdministradorRR</h4>
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
