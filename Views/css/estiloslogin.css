@@ -1,5 +1,5 @@
 body {
-    background-image: url(1.jpg);
+    background-image: url("../Img/login.png");
     -webkit-background-size: cover;
     background-size: cover;
 }
