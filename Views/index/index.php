@@ -11,13 +11,13 @@
 	    <br>
 		<div class="col-sm-offset-4 col-md-4">
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#alumno" aria-controls="alumno" role="tab" data-toggle="tab">Portal del Alumno</a></li>
+				<li role="presentation" class="active"><a href="#alumno" aria-controls="alumno" role="tab" data-toggle="tab">Portal Alumno</a></li>
 				<li role="presentation"><a href="#administradores" aria-controls="administradores" data-toggle="tab">Portal Administradores</a></li>
 			</ul>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade in active" id="alumno">
 				    <br>	
-					<h4 class="text-center">Ingrese los datos del Alumno</h4>
+					<h4 class="text-center">Acceso Alumno</h4>
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
@@ -41,7 +41,7 @@
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="administradores">	
 				    <br>	
-					<h4 class="text-center">Acceso a administradores</h4>
+					<h4 class="text-center">Acceso Administrador</h4>
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
