@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
+<h1>PUTO ANTONIO VE ESTO</h1>
 <div class="container">
 	<div class="row">
 	    <br>
@@ -21,7 +22,7 @@
 					<br>
 					<form class="form-horizontal">
 						<div class="form-group">
-					    	<label for="inputEmail3" class=" glyphicon glyphicon-user">Email</label>
+					    	<label for="inputEmail3" class="glyphicon glyphicon-user">Email</label>
 					    	<div class="col-sm-9">
 					      		<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
 					    	</div>
