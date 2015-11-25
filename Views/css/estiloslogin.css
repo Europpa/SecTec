@@ -1,18 +1,35 @@
+/*estilos del cuerpo del login */
 body {
-    background-image: url("../Img/login.png");
-    -webkit-background-size: cover;
-    background-size: cover;
+    background-image:  url("../Img/login.png");
 }
+/*estilos de boton*/
 form,
 input,
 button {
     margin: 10px;
+    margin-right: 30px;
 }
 #login {
     background-color: rgba(0, 0, 0, 0.5);
-    margin-top: 100px;
+    margin-top: 100px;      
     border-radius: 10px;
 }
+/*estilos del contenedor*/
+.container{ 
+
+	padding-right: 358px;
+    padding-top: 115px;
+}
+/*estilo del titulo del login*/
 h4{
-	color: #fff;
+   font-weight: bold;
+   font-size: 23px;
+   color: #000080;
+}
+.nav-tabs>li>a{
+    border-bottom:2px solid black;
+}
+/*estilos de los label del login*/
+.form-horizontal .control-label{
+    padding-top: 23px;
 }
