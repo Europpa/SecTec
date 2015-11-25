@@ -9,16 +9,19 @@ button {
     margin: 10px;
     margin-right: 30px;
 }
+.conteinernav{
+  background-color: white;
+}
 #login {
     background-color: rgba(0, 0, 0, 0.5);
     margin-top: 100px;      
-    border-radius: 10px;
+    border-radius: 70px;
 }
 /*estilos del contenedor*/
 .container{ 
 
 	padding-right: 358px;
-    padding-top: 115px;
+    padding-top: 105px;
 }
 /*estilo del titulo del login*/
 h4{
@@ -29,7 +32,4 @@ h4{
 .nav-tabs>li>a{
     border-bottom:2px solid black;
 }
-/*estilos de los label del login*/
-.form-horizontal .control-label{
-    padding-top: 23px;
-}
+

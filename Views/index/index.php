@@ -33,6 +33,10 @@
 					            <div class="form-group">
 					    	        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 					            </div>
+					            <div class="alert alert-danger">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Danger!</strong> Datos Incorrectos.
+                                </div>
 					        </form>
 				            </div>
 				            <div role="tabpanel" class="tab-pane fade" id="alumno">	
@@ -52,6 +56,10 @@
 					    	        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
 					            </div>
 					        </form>
+					        <div class="alert alert-danger">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Danger!</strong> Datos Incorrectos.
+                            </div>
 					    </br>   
 					</br>     
 				</div>
