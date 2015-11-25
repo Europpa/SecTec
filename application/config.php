@@ -7,7 +7,7 @@
  */
 
 
-define('DEFAULT_CONTROLLER', 'index');
+define('DEFAULT_CONTROLLER', 'login');
 define('DEFAULT_LAYOUT', 'default');
 define('BASE_URL', 'http://localhost:93/sectec/');
 define('APP_NAME', 'Secundaria Tecnica 127');

@@ -1,18 +1,16 @@
+/*estilos del cuerpo del login */
 body {
-    background-image: url("../Img/login.png");
-    -webkit-background-size: cover;
-    background-size: cover;
+    background-image:  url("../Img/login.png");
 }
-form,
-input,
-button {
-    margin: 10px;
+
+#containernav{
+  margin-top: 60px;
+  background-color: white;
 }
-#login {
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-top: 100px;
-    border-radius: 10px;
+#encabezado{
+  background-color: white;
 }
-h4{
-	color: #fff;
+#alerta{
+    margin-top: 10px;
+    
 }

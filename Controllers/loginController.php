@@ -1,5 +1,5 @@
 <?php
-class indexController extends BaseController{
+class loginController extends BaseController{
 	// Variable para manejar el modelo que diste de alta
 	private $model;
 	
@@ -11,7 +11,7 @@ class indexController extends BaseController{
         $this->model = $this->loadModel('login');
     }
     public function index(){
-        $this->_View->render('index');
+        $this->_View->render('login');
     }
     public function login(){
         //$this->_View->render('index');
@@ -19,13 +19,13 @@ class indexController extends BaseController{
         if(isset($_POST['adminmat'])){
             $_POST['adminmat'];
         }else{
-            $this->_View->render('index');
+            $this->_View->render('login');
             exit;
         }
         if(isset($_POST['adminpass'])){
             $_POST['adminpass'];
         }else{
-            $this->_View->render('index');
+            $this->_View->render('login');
             exit;
         }
 
@@ -34,7 +34,7 @@ class indexController extends BaseController{
             foreach ($matricula as $value) {
                 $this->_View->response = $value;    
             }
-            $this->_View->render('index');
+            $this->_View->render('login');
             exit;
         }
         $password = $this->euroval->run('Password',$_POST['adminpass'],array('required','alpha_numeric')); 
@@ -42,7 +42,7 @@ class indexController extends BaseController{
             foreach ($password as $value) {
                 $this->_View->response = $value;    
             }
-            $this->_View->render('index');
+            $this->_View->render('login');
             exit;
         }
         $datos = array(
@@ -54,7 +54,7 @@ class indexController extends BaseController{
         if($inicio != 0){
             //$this->model->login(); /*verifica datos*/ 
            $this->_View->response = "#logeado exitosamente";
-           $this->_View->render('index');
+           $this->_View->render('login');
         }else{
            $this->redirect('cambiarpassword');
         }
