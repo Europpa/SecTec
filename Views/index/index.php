@@ -9,7 +9,7 @@
 <div class="container">
 	<div class="row">
 	    <br>
-		<div class="col-sm-offset-6 col-md-5">
+		<div class="col-sm-offset-7 col-md-3">
 		    <div class="panel panel-default">
                 <div class="panel-body">
 			        <ul class="nav nav-tabs" role="tablist">

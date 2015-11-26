@@ -2,34 +2,14 @@
 body {
     background-image:  url("../Img/login.png");
 }
-/*estilos de boton*/
-form,
-input,
-button {
-    margin: 10px;
-    margin-right: 30px;
-}
-.conteinernav{
+#containernav{
+  margin-top: 60px;
   background-color: white;
 }
-#login {
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-top: 100px;      
-    border-radius: 70px;
+#encabezado{
+  background-color: white;
 }
-/*estilos del contenedor*/
-.container{ 
-
-	padding-right: 358px;
-    padding-top: 105px;
-}
-/*estilo del titulo del login*/
-h4{
-   font-weight: bold;
-   font-size: 23px;
-   color: #000080;
-}
-.nav-tabs>li>a{
-    border-bottom:2px solid black;
+#alerta{
+    margin-top: 10px;   
 }
 
