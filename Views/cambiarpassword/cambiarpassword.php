@@ -6,10 +6,12 @@
 </head>
 <body>
 	<h4>Haz entrado por primera ves cambia tu password para poder continuar</h4>
-	<form action="">
-		<label for="">Digite su contraseña actual<input type="text"></label><br>
-		<label for="">Digite su nueva contraseña<input type="text"></label><br>
-		<label for="">Confirme su nueva contraseña<input type="text"></label><br>
+	<form action="<?php echo BASE_URL . 'cambiarpassword' . DS . 'changePassword';?>" method="POST">
+		<label for="">Escriba su contraseña actual</label><input type="text" name="nowpass" id="" class=""><br>
+		<label for="">Escribe su nueva contraseña</label><input type="text" name="newpass" id="" class=""><br>
+		<label for="">Verifique su nueva contraseña</label><input type="text" name="confirmpass" id="" class=""><br>
+		<input type="submit">
 	</form>
+<?php echo $this->data;?>
 </body>
 </html>
