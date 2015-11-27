@@ -21,7 +21,7 @@ try{
     require_once APP_PATH . 'Model.php';
     require_once APP_PATH . 'Database.php';
     require_once APP_PATH . 'Sessiones.php';
-    Sessiones::construir_session();
+//Sessiones::construir_session();
     Dispatcher::run(new Request());
 }catch (Exception $e){
     echo $e->getMessage();

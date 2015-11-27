@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Secundaria Tecnica 127</title>
+	<title>Secundaria Técnica 127</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
 <div class="container-fluid" id="encabezado">
 	<div class="page-header">
-  		<h1 class="text-center">Sistema de Administracion <small>Escuela Técnica 127</small></h1>
+  		<h1 class="text-center">Sistema de Administración <small>Escuela Técnica 127</small></h1>
 	</div>
 </div>
 
@@ -29,22 +29,28 @@
 				<br>
 				<h4 class="text-center">Login Administrador</h4>
 				<br>
-		    	<form class="form-horizontal" method="POST" action="<?php echo BASE_URL . 'login' . DS . 'login';?>">
+		    	<form class="form-horizontal" id="logone">
 					<div class="form-group">
 		    			<div class="col-md-12">
-		      				<input type="text" class="form-control" id="inputEmail3" placeholder="Matricula" name="adminmat" value="<?php echo isset($this->data['adminmat']) ? $this->data['adminmat'] : "" ?>">
+		      				<input type="text" class="form-control" id="adminmat" placeholder="Matricula" name="adminmat">
 		    			</div>
 		  			</div>
 		  			<div class="form-group">
 					    <div class="col-md-12">
-					    	<input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña" name="adminpass" value="<?php echo isset($this->data['adminpass']) ? $this->data['adminpass'] : "" ?>">
+					    	<input type="password" class="form-control" id="adminpass" placeholder="Contraseña" name="adminpass" value="">
 					    </div>
 		  			</div>
+		  			
 		  			<div class="form-group">
-		  				<div class="col-md-8 col-md-offset-2">
-		  					<input type="submit" class="btn btn-primary btn-md btn-block">
-		  				</div>
-		  			</div>
+				  			<div class="col-md-2 hidden" id="alerta">
+				  				<img src="<?php echo BASE_URL . 'Views' . DS  . 'Img' . DS . 'progress.gif'; ?>" class="img-rounded" alt="" height="30px" width="30px">
+				  			</div>			
+		  				
+			  				<div class="col-md-8 col-md-offset-2" id="boton">
+			  					<input type="button" class="btn btn-primary btn-md btn-block" value="Enviar" id="logon"> 
+			  			
+			  				</div>
+		  			</div>		 
 		  		</form>
 		    </div>
 
@@ -65,7 +71,7 @@
 		  			</div>
 		  			<div class="form-group">
 		  				<div class="col-md-8 col-md-offset-2">
-		  					<input type="submit" class="btn btn-primary btn-md btn-block">
+		  						<input type="button" class="btn btn-primary btn-md btn-block">
 		  				</div>
 		  			</div>
 		  		</form>
@@ -73,26 +79,16 @@
 		</div>   
 	</div>	
 </div>
-<?php 
-if (isset($this->response)){
-?>
-	<div class="list-group-item list-group-item-danger col-md-4 col-md-offset-4" id="alerta">
-	<?php
-	echo $this->response;
-	?>	
-	</div>
-<?php 
-}else{
-	echo "";
-}		
-?>
+<!-- alerta del login -->
+<div class="alert alert-danger col-md-4 col-md-offset-4 hidden" id="warning" role="alert"></div>		
 
 </body>
 
 <!--LINKEA TODOS LOS CSS-->
 <link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.min.css';?>" type="text/css">
-<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.theme.css';?>" type="text/css">
+<link rel="text/stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.theme.css';?>" type="text/css">
 <link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'estiloslogin.css';?>" type="text/css">
-<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
-<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
-</html>
+<script src="<?php echo BASE_URL. 'Views' .DS. 'js' .DS. 'jquery-2.1.4.min.js';?>"></script>
+<script src="<?php echo BASE_URL. 'Views' .DS. 'js' .DS. 'bootstrap.min.js';?>"></script>
+<script src="<?php echo BASE_URL. 'Views' .DS. 'js' .DS. 'jslogin.js';?>"></script>
+</html>	

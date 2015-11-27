@@ -45,6 +45,7 @@ class Sessiones {
     
     public static function destruir_session() {
         session_destroy();
+        header('Location:'.BASE_URL);
     }
     
     public static function autenticado(){
@@ -77,8 +78,8 @@ class Sessiones {
     }
     
     public static function rangos($rango){
-        $role['usuario'] = 0;
         $role['admin'] = 1;
+        $role['profesor'] = 2;
         if(!array_key_exists($rango, $role)){
             throw new Exception('Error de accesso');
         }else{

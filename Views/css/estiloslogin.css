@@ -2,7 +2,6 @@
 body {
     background-image:  url("../Img/login.png");
 }
-
 #containernav{
   margin-top: 60px;
   background-color: white;
@@ -10,7 +9,7 @@ body {
 #encabezado{
   background-color: white;
 }
-#alerta{
-    margin-top: 10px;
-    
+#warning{
+	margin-top: 10px;
 }
+
