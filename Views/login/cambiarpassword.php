@@ -3,55 +3,68 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cambia tu password</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-    <div class="container-fluid" id="encabezado">
-    	<div class="page-header">
-    		<h1 class="text-center"> ¡Felicidades!<pre>Este ha sido su primer logeo, por favor cambie su contraseña ...</pre></h1>
-   			
-    	</div>
-    	<a href="<?php echo BASE_URL . 'login' . DS . 'cerrarSession'; ?>">Cerrar Session</a>
-	<?php 
-	echo "<strong>Foto: </strong>".$this->foto;
-	echo " ";
-	echo "<strong>Matricula: </strong>".$this->matricula;
-	echo " ";
-	echo "<strong>Nombre: </strong>".$this->nombre;
-	echo " ";
-	echo "<strong>Rango: </strong>".$this->rango;
-	?>
-
-
-    </div>
-    <div class="row">
-	<div class="container col-md-4 col-md-offset-4" id="containernav">
-	   <br>
-      <form class="form-horizontal" action="<?php echo BASE_URL . 'cambiarpassword' . DS . 'changePassword';?>" method="POST">
-        <h2 class="text-center">Actualice su contraseña</h2>
-        <br>
-		<div class="form-group">
-        	     <h3  class="text-center" >Ingrese su nueva contraseña</h3>
-			     <label for="inputcontractual" class="sr-only"></label>
-			     <div class="col-sm-10 col-sm-offset-1 ">
-			         <input type="password" id="inputcontractual" name="newpass" class="form-control"  required="" autofocus="">
-		         </div>
+<div class="container-fluid" id="header">
+	<div class="col-md-12">
+		<div class="col-md-1">
+			<img src="<?php echo $this->foto;?>" alt="..." class="img-thumbnail" id="fotografia">
 		</div>
-		<div class="form-group">
-        	     <h3  class="text-center" >Confirme su nueva contraseña</h3>
-			     <label for="inputcontractual" class="sr-only"></label>
-			     <div class="col-sm-10 col-sm-offset-1 ">
-			         <input type="password" id="inputcontractual" name="confirmpass" class="form-control"  required="" autofocus="">
-		         </div>
+		<div class="col-md-9" id="data">
+			<strong>Bienvenido al sistema de administración y control escuela secundaria técnica 127</strong>
+			<ul class="list-inline">
+				<li><strong>Matricula: </strong><?php echo $this->matricula; ?></li>
+				<li><strong>Nombre: </strong><?php echo $this->nombre; ?></li>
+				<li><strong>Rango: </strong><?php echo $this->rango; ?></li>
+			</ul>
+		</div>			
+		<div class="col-md-2">
+			<a href="<?php echo BASE_URL . 'login' . DS . 'cerrarSession'; ?>" class="btn btn-primary" id="cerrar">Cerrar Sesión</a>
 		</div>
-		<div class="form-group">
-			<div class="col-md-8 col-md-offset-2">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Finalizar</button>
-        </div>
-      </form>
-      <div id="warning"><?php echo isset($this->warning) ? $this->warning : ""; ?></div>
-    </div> 
-    </div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-md-6 col-md-offset-3" id="formulario-password">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Felicitaciones <?php echo $this->nick; ?>!</strong></h3>
+			</div>
+			<div class="panel-body">
+				<p>Bienvenido al sistema de administración y control, se ha detectado que es tu primer ingreso al sistema y por motivos de seguridad tendrás que cambiar tu contraseña para ingresar al panel principal.
+				</p>
+				<p><strong>Instrucciones: </strong>Rellene los campos que se piden debajo</p>
+				<br>
+				<form class="form-horizontal" id="frm-changepass">
+					<div class="form-group">
+						<label for="" class="col-md-4 control-label">Nueva Contraseña: </label>
+						<div class="col-md-6">
+							<input type="password" class="form-control" name="pass" id="pass">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-md-4 control-label">Confirmación:</label>
+						<div class="col-md-6">
+							<input type="password" class="form-control" name="Cpass" id="Cpass">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 col-md-offset-4">
+							<input type="button" class="btn btn-warning" value="Confirmar" id="confirmPass">
+						</div>
+						<div class="col-md-2 hidden" id="warning-img">
+							<img src="<?php echo BASE_URL . 'Views' . DS  . 'Img' . DS . 'progress.gif'; ?>"  alt="" height="30px" width="30px" id="warning-img">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-md-offset-3">
+		<div class="alert alert-danger hidden" id="warning" role="alert"></div>
+	</div>
+</div>
+		
 </body>
 <!--LINKEA TODOS LOS CSS-->
 <link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.min.css';?>" type="text/css">
@@ -59,4 +72,6 @@
 <link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'password.css';?>" type="text/css">
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
+<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jsconfirmpass.js';?>"></script>
+
 </html>

@@ -17,9 +17,11 @@ class loginController extends BaseController{
     public function acceso(){
         
         if(!isset($_POST['adminmat'])){
+            throw new Exception("Datos incorrectos");
             exit;
         }
         if(!isset($_POST['adminpass'])){
+            throw new Exception("Datos incorrectos");   
             exit;
         }
 
@@ -64,7 +66,6 @@ class loginController extends BaseController{
                     );
                 echo json_encode($response);
             }    
-            Sessiones::construir_session();
             Sessiones::set_var($usuario);
         }
 
@@ -72,17 +73,67 @@ class loginController extends BaseController{
     }    
 
     public function changePass(){
-        Sessiones::construir_session();
         Sessiones::autenticado();
-        $this->_View->foto = Sessiones::get_var('photo');
+        $srcPhoto = PHOTOS . Sessiones::get_var('photo');
+        $this->_View->foto = $srcPhoto;
         $this->_View->matricula = Sessiones::get_var('matricula');
+        $this->_View->nick = Sessiones::get_var('name');
         $this->_View->nombre = Sessiones::get_var('name').' '.Sessiones::get_var('lastnameF').' '.Sessiones::get_var('lastnameM');
         $this->_View->rango = Sessiones::get_var('rango'); 
         $this->_View->render('cambiarpassword');
+        
+
+    }
+    public function verificarPass(){
+        if(!isset($_POST['pass'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
+        if(!isset($_POST['Cpass'])){
+            throw new Exception("Datos incorrectos");    
+            exit;
+        }
+        
+        $pass = $this->euroval->run('Password',$_POST['pass'],array('required'));
+        if(is_array($pass)){
+            foreach ($pass as $value){
+                throw new Exception($value);
+            }
+            exit;
+        }
+
+        $Cpass = $this->euroval->run('Confirmación',$_POST['Cpass'],array('required'));
+        if(is_array($Cpass)){
+            foreach ($Cpass as $value){
+                throw new Exception($value);
+            }
+            exit;
+        }
+        
+        if ($_POST['pass'] !== $_POST['Cpass']) {
+            throw new Exception("La contraseña debe ser identica");       
+            exit;
+        }
+        
+        $usuario = Sessiones::get_var('id_user');
+        $matricula = Sessiones::get_var('matricula');
+
+        $data = array(
+            'pass' => $pass,
+            'Cpass' => $Cpass,
+            'user' => $usuario,
+            'matricula' => $matricula);
+
+        $res = $this->model->cambiarPassword($data);
+        if(!$res){
+            throw new Exception("Error inesperado contacte al administrador");
+            exit;
+        }
+        $status = array('status' => 'Se ha cambiado su contraseña');
+        echo json_encode($data);    
     }
 
     public function cerrarSession(){
-        Sessiones::construir_session();
         Sessiones::delete_var('id_user');
         Sessiones::delete_var('matricula');
         Sessiones::delete_var('passwordStatus');

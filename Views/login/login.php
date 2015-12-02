@@ -71,7 +71,7 @@
 		  			</div>
 		  			<div class="form-group">
 		  				<div class="col-md-8 col-md-offset-2">
-		  						<input type="button" class="btn btn-primary btn-md btn-block">
+		  					<input type="button" class="btn btn-primary btn-md btn-block">
 		  				</div>
 		  			</div>
 		  		</form>

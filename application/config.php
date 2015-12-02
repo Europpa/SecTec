@@ -13,6 +13,7 @@ define('BASE_URL', 'http://localhost:93/sectec/');
 define('APP_NAME', 'Secundaria Tecnica 127');
 define('APP_SLOGAN', 'Secundaria 127');
 define('APP_COMPANY', 'PC Solutions');
+define('PHOTOS', BASE_URL . 'Views' . DS . 'fotografias' . DS);
 
 /*DB*/
 

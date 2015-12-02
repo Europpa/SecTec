@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Secundaria Tecnica 127</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="<?php echo 'Views'.DS.'css'.DS.'bootstrap.min.css';?>" type="text/css">
+	<link rel="stylesheet" href="<?php echo 'Views'.DS.'css'.DS.'bootstrap.theme.css';?>" type="text/css">
+	<link rel="stylesheet" href="<?php echo 'Views'.DS.'css'.DS.'estiloslogin.css';?>" type="text/css">
 </head>
 <body>
 <div class="container">
@@ -69,9 +72,6 @@
 </div>
 </body>
 <!--LINKEA TODOS LOS CSS-->
-<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.min.css';?>" type="text/css">
-<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.theme.css';?>" type="text/css">
-<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'estiloslogin.css';?>" type="text/css">
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
 </html>

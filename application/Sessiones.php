@@ -60,7 +60,7 @@ class Sessiones {
         if(!Sessiones::get_var('autenticado')){
             return false;
         }
-        if(self::get_var('rango') != self::rangos($rango)){
+        if(self::get_var('id_rango') != self::rangos($rango)){
             return false;
         }   
         return true;

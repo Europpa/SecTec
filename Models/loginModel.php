@@ -7,7 +7,12 @@ class loginModel extends Model{
 		$data = array(
 			':matricula' => $datos['matricula'],
 			':password' => md5($datos['password']));
-		$query = 'SELECT * FROM usuarios WHERE matricula = :matricula and contrasena = :password';
+		$query = 'SELECT usr.id_usuario, usr.matricula, usr.change_pass, usr.nombre, usr.a_paterno, usr.a_materno, usr.fotografia, ran.id_rango ,ran.nombre as rango 
+				FROM usuarios usr INNER JOIN rangos ran 
+				ON usr.id_rango = ran.id_rango
+				WHERE usr.matricula = :matricula AND usr.contrasena = :password';
+			
+
 		$resultado = $this->query($query,$data);
 		if($resultado->rowCount() == 1){
 			$usuario = $resultado->fetch();
@@ -19,7 +24,8 @@ class loginModel extends Model{
 				'lastnameF' => $usuario['a_paterno'],
 				'lastnameM' => $usuario['a_materno'],
 				'photo' => $usuario['fotografia'],
-				'rango' => $usuario['id_rango'],
+				'id_rango' => $usuario['id_rango'],
+				'rango' => $usuario['rango'],
 				'autenticado' => True
 				);
 			return $vars;
@@ -28,8 +34,20 @@ class loginModel extends Model{
 		}
 	}
 
-	public function cambiarPass(){
+	public function cambiarPassword($datos){
+		$data = array(
+			':pass' => md5($datos['pass']),
+			':id' => $datos['user'],
+			':matricula' => $datos['matricula']);
+		$query = 'UPDATE usuarios SET 
+			usuarios.change_pass = 1, usuarios.contrasena = :pass
+			WHERE usuarios.id_usuario = :id AND usuarios.matricula = :matricula';
 		
+			$resultado = $this->query($query,$data);
+			if(!$resultado){
+				return false;
+			}
+		return true;
 	}
 
 }
