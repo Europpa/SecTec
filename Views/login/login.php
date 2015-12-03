@@ -42,14 +42,12 @@
 		  			</div>
 		  			
 		  			<div class="form-group">
-				  			<div class="col-md-2 hidden" id="alerta">
-				  				<img src="<?php echo BASE_URL . 'Views' . DS  . 'Img' . DS . 'progress.gif'; ?>" class="img-rounded" alt="" height="30px" width="30px">
-				  			</div>			
-		  				
-			  				<div class="col-md-8 col-md-offset-2" id="boton">
-			  					<input type="button" class="btn btn-primary btn-md btn-block" value="Enviar" id="logon"> 
-			  			
-			  				</div>
+			  			<div class="col-md-2 hidden" id="alerta">
+			  				<img src="<?php echo BASE_URL . 'Views' . DS  . 'Img' . DS . 'progress.gif'; ?>" class="img-rounded" alt="" height="30px" width="30px">
+			  			</div>			
+		  				<div class="col-md-8 col-md-offset-2" id="boton">
+		  					<input type="button" class="btn btn-primary btn-md btn-block" value="Enviar" id="logon"> 
+		  				</div>
 		  			</div>		 
 		  		</form>
 		    </div>
@@ -71,7 +69,7 @@
 		  			</div>
 		  			<div class="form-group">
 		  				<div class="col-md-8 col-md-offset-2">
-		  					<input type="button" class="btn btn-primary btn-md btn-block">
+		  					<input type="button" class="btn btn-primary btn-md btn-block" value="Enviar">
 		  				</div>
 		  			</div>
 		  		</form>

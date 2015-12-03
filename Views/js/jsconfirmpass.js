@@ -12,9 +12,7 @@ $('#confirmPass').click(function(){
 			$('#warning').removeClass();
 			$('#warning').addClass('alert alert-success');
 			$('#warning').html(data.status + ', redireccionando al panel espere unos segundos...');
-			setTimeout(function(){
-  				$('#warning').html('<strong>Success: </strong>' + 'Listo NOOB :D ');      
-  			}, 2500);
+			setTimeout("location.href='../home'",2500);    			
 		},
 		error:function(req, status, error){
 			$('#warning').removeClass();
