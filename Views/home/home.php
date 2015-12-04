@@ -29,7 +29,7 @@
 	<h4 class="text-center">Categorias:</h4>
 	<div class="list-group">
 		<a href="" class="list-group-item active">Inicio</a>
-		<a href="" class="list-group-item">Administración de usuarios</a>
+		<a href="<?php echo BASE_URL . 'usuarios'?>" class="list-group-item">Administración de usuarios</a>
 		<a href="" class="list-group-item">Administración de grupos</a>
 		<a href="" class="list-group-item">Administración de clases</a>
 		<a href="" class="list-group-item">Administración de ciclo escolar</a>
@@ -50,6 +50,7 @@
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
 <script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jsconfirmpass.js';?>"></script>
+
 
 </body>
 </html>

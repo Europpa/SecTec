@@ -1,8 +1,7 @@
 <?php 
-class homeController extends BaseController{
+class usuariosController extends BaseController{
 	public function __construct(){
 		parent::__construct();
-
 	}
 	public function index(){
 		Sessiones::autenticado();
@@ -12,6 +11,6 @@ class homeController extends BaseController{
         $this->_View->nick = Sessiones::get_var('name');
         $this->_View->nombre = Sessiones::get_var('name').' '.Sessiones::get_var('lastnameF').' '.Sessiones::get_var('lastnameM');
         $this->_View->rango = Sessiones::get_var('rango'); 
-		$this->_View->render('home');
+		$this->_View->render('usuarios');
 	}
 }
