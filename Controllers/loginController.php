@@ -2,10 +2,10 @@
 class loginController extends BaseController{
 	// Variable para manejar el modelo que diste de alta
 	private $model;
-	
+
     public function __construct() {
         parent::__construct();
-        //Cargar modelo 
+        //Cargar modelo
         $this->getLibrary('EuroVal');
         $this->euroval = new EUROVAL();
         $this->model = $this->loadModel('login');
@@ -15,13 +15,13 @@ class loginController extends BaseController{
 
     }
     public function acceso(){
-        
+
         if(!isset($_POST['adminmat'])){
             throw new Exception("Datos incorrectos");
             exit;
         }
         if(!isset($_POST['adminpass'])){
-            throw new Exception("Datos incorrectos");   
+            throw new Exception("Datos incorrectos");
             exit;
         }
 
@@ -33,7 +33,7 @@ class loginController extends BaseController{
             exit;
         }
 
-        $password = $this->euroval->run('Password',$_POST['adminpass'],array('required','alpha_numeric')); 
+        $password = $this->euroval->run('Password',$_POST['adminpass'],array('required','alpha_numeric'));
         if(is_array($password)){
             foreach ($password as $value){
                 throw new Exception($value);
@@ -45,10 +45,10 @@ class loginController extends BaseController{
             'matricula' => $matricula,
             'password' => $password);
 
-        $usuario = $this->model->login($datos);     
-        
+        $usuario = $this->model->login($datos);
+
         if(!$usuario){
-            throw new Exception('Su matricula o la contraseña son incorrectas');    
+            throw new Exception('Su matricula o la contraseña son incorrectas');
         }else{
             if($usuario['passwordStatus'] != 0){
                 $response = array(
@@ -65,12 +65,12 @@ class loginController extends BaseController{
                     'url' => 'login/changePass'
                     );
                 echo json_encode($response);
-            }    
+            }
             Sessiones::set_var($usuario);
         }
 
         //$this->_View->render('login');
-    }    
+    }
 
     public function changePass(){
         Sessiones::autenticado();
@@ -79,9 +79,9 @@ class loginController extends BaseController{
         $this->_View->matricula = Sessiones::get_var('matricula');
         $this->_View->nick = Sessiones::get_var('name');
         $this->_View->nombre = Sessiones::get_var('name').' '.Sessiones::get_var('lastnameF').' '.Sessiones::get_var('lastnameM');
-        $this->_View->rango = Sessiones::get_var('rango'); 
+        $this->_View->rango = Sessiones::get_var('rango');
         $this->_View->render('cambiarpassword');
-        
+
 
     }
     public function verificarPass(){
@@ -90,10 +90,10 @@ class loginController extends BaseController{
             exit;
         }
         if(!isset($_POST['Cpass'])){
-            throw new Exception("Datos incorrectos");    
+            throw new Exception("Datos incorrectos");
             exit;
         }
-        
+
         $pass = $this->euroval->run('Password',$_POST['pass'],array('required'));
         if(is_array($pass)){
             foreach ($pass as $value){
@@ -109,12 +109,12 @@ class loginController extends BaseController{
             }
             exit;
         }
-        
+
         if ($_POST['pass'] !== $_POST['Cpass']) {
-            throw new Exception("La contraseña debe ser identica");       
+            throw new Exception("La contraseña debe ser identica");
             exit;
         }
-        
+
         $usuario = Sessiones::get_var('id_user');
         $matricula = Sessiones::get_var('matricula');
 
@@ -130,7 +130,7 @@ class loginController extends BaseController{
             exit;
         }
         $status = array('status' => 'Se ha cambiado su contraseña');
-        echo json_encode($data);    
+        echo json_encode($status);
     }
 
     public function cerrarSession(){
@@ -143,7 +143,7 @@ class loginController extends BaseController{
         Sessiones::delete_var('photo');
         Sessiones::delete_var('rango');
         Sessiones::delete_var('autenticado');
-        Sessiones::destruir_session();   
+        Sessiones::destruir_session();
     }
 
 }

@@ -5,7 +5,6 @@
  * Date: 24/10/14
  * Time: 07:13 PM
  */
-
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' . DS);

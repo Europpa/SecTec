@@ -12,12 +12,11 @@ $('#confirmPass').click(function(){
 			$('#warning').removeClass();
 			$('#warning').addClass('alert alert-success');
 			$('#warning').html(data.status + ', redireccionando al panel espere unos segundos...');
-			setTimeout("location.href='../home'",2500);    			
 		},
 		error:function(req, status, error){
 			$('#warning').removeClass();
 			$('#warning').addClass('alert alert-danger');
-   			$('#warning').html('<strong>Error: </strong>' + req.responseText);      
+   			$('#warning').html('<strong>Error: </strong>' + req.responseText);
 		}
 	});
 });

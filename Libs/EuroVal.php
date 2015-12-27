@@ -165,7 +165,7 @@ class EUROVAL{
 		if(empty($input)){
 			return true;
 		}
-		if (preg_match("/^([a-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ\s])+$/i", $input)){
+		if (preg_match("/^([a-zÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåñÑçèéêëìíîïðòóôõöùúûüýÿ\s])+$/i", $input)){
 			return true;
 		}else{
 			return array(
@@ -227,7 +227,7 @@ class EUROVAL{
 		if(empty(trim($input))){
 			return true;
 		}
-		if(filter_var($input, FILTER_VALIDATE_INT)){
+		if(preg_match('/^[0-9]*$/', $input)){
 			return true;
 		}else{
 			return array(

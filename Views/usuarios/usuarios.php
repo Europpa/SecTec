@@ -44,9 +44,10 @@
   		<nav class="navbar navbar-default">
   			<div class="container-fluid">
     			<div class="navbar-header">
-    				<div class="navbar-brand">Ultimos usuarios Registrados</div>
-    				<button class="btn btn-primary navbar-btn active"><span class="glyphicon glyphicon-search"></span> Listar todos los usuarios</button>
-    				<button class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-plus"></span> Alta Usuario</button>
+    				<div class="navbar-brand">Seleccione:</div>
+    				<a href="<?php echo BASE_URL . 'usuarios'; ?>" class="btn btn-info navbar-btn active"><span class="glyphicon glyphicon-info-sign"></span> Ultimos usuarios registrados</a>
+    				<a href="<?php echo BASE_URL . 'usuarios/listaUsuarios'; ?>" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-search"></span> Listar todos los usuarios</a>
+    				<a href="<?php echo BASE_URL . 'usuarios/altaUsuarios'; ?>" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-plus"></span> Alta Usuario</a>
     			</div>
 	  		</div>
 		</nav>
@@ -54,20 +55,13 @@
 	<table id="tablita" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Puesto</th>
+            <th>Fecha de Registro</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-    </tbody>
 </table>
 
 </section>

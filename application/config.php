@@ -9,7 +9,7 @@
 
 define('DEFAULT_CONTROLLER', 'login');
 define('DEFAULT_LAYOUT', 'default');
-define('BASE_URL', 'http://localhost:93/sectec/');
+define('BASE_URL', 'http://localhost/SecTec/');
 define('APP_NAME', 'Secundaria Tecnica 127');
 define('APP_SLOGAN', 'Secundaria 127');
 define('APP_COMPANY', 'PC Solutions');
@@ -19,6 +19,6 @@ define('PHOTOS', BASE_URL . 'Views' . DS . 'fotografias' . DS);
 
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASSWORD','');
+define('DB_PASSWORD','admin');
 define('DB_NAME','secundaria');
 define('DB_CHAR','utf8');
