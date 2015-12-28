@@ -38,7 +38,27 @@ class usuariosController extends BaseController{
 	}
 	public function allusers(){
 		$users = $this->model->allusers();
-        echo json_encode($users);
+
+		$a = array();
+		foreach ($users as $user) {
+			$ingreso = new DateTime($user['antiguedad_ingreso_sep']);
+			$hoy = new DateTime("now");
+			$intervalo = date_diff($ingreso,$hoy);
+			$fechasep = $intervalo->format("%Y/%M/%D");
+			array_push($a,array(
+				'id_usuario' => $user['id_usuario'],
+				'matricula' => $user['matricula'],
+				'nombre' => $user['nombre'],
+				'correo' => $user['correo'],
+				'telefono' => $user['telefono'],
+				'celular' => $user['celular'],
+				'antiguedad_ingreso_sep' => $fechasep,
+				'puesto' => $user['puesto'],
+				'rango' => $user['rango'],
+				'fecha_registro' => $user['fecha_registro'],
+			));
+		}
+        echo json_encode($a);
 	}
 
 	public function altaUsuarios(){
@@ -242,17 +262,7 @@ class usuariosController extends BaseController{
 
     public function updateUser(){
 
-        if(!isset($_POST['rango'])){
-            throw new Exception("Datos incorrectos");
-            exit;
-        }
-
 		if(!isset($_POST['puesto'])){
-			throw new Exception("Datos incorrectos");
-			exit;
-		}
-
-		if(!isset($_POST['matricula'])){
 			throw new Exception("Datos incorrectos");
 			exit;
 		}
@@ -289,14 +299,6 @@ class usuariosController extends BaseController{
             exit;
         }
 
-		$rango = $this->euroval->run('Rango',trim($_POST['rango']),array('required','integer'));
-		if(is_array($rango)){
-			foreach ($rango as $value) {
-				throw new Exception($value);
-			}
-			exit;
-		}
-
 		$puesto = $this->euroval->run('Puesto',trim($_POST['puesto']),array('required','alphabetic'));
 		if(is_array($puesto)){
 			foreach ($puesto as $value) {
@@ -305,21 +307,14 @@ class usuariosController extends BaseController{
 			exit;
 		}
 
-		$matricula = $this->euroval->run('Matricula', trim($_POST['matricula']),array('required','alpha_numeric'));
-		if(is_array($matricula)){
-			foreach ($matricula as $value) {
-				throw new Exception($value);
-			}
-			exit;
-		}
-
 		$old_mat = $this->euroval->run('Vieja Matricula', trim($_POST['old_mat']),array('required','alpha_numeric'));
-		if(is_array($matricula)){
-			foreach ($matricula as $value) {
+		if(is_array($old_mat)){
+			foreach ($old_mat as $value) {
 				throw new Exception($value);
 			}
 			exit;
 		}
+		
 		$nombre = $this->euroval->run('Nombre',trim($_POST['nombre']),array('required','alphabetic'));
 		if(is_array($nombre)){
 			foreach ($nombre as $value) {
@@ -417,9 +412,7 @@ class usuariosController extends BaseController{
         $datos = array(
 			'old_mat' => $old_mat,
             'photo' => $photo,
-			'rango' => $rango,
 			'puesto' => $puesto,
-			'matricula' => $matricula,
 			'nombre' => $nombre,
 			'a_paterno' => $a_paterno,
 			'a_materno' => $a_materno,

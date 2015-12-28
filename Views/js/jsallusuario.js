@@ -1,6 +1,7 @@
 $(document).ready( function () {
 
     var table = $('#allusers').DataTable({
+        responsive: true,
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "No se encontro nada",
@@ -23,18 +24,18 @@ $(document).ready( function () {
             {"data": "id_usuario"},
         	{"data": "matricula"},
         	{"data": "nombre"},
-            {"data": "correo"},
-            {"data": "telefono"},
-            {"data": "celular"},
-            {"data": "antiguedad_ingreso_sep"},
             {"data": "puesto"},
             {"data": "rango"},
-        	{"data": "fecha_registro"},
+            {"data": "fecha_registro"},
+            {"defaultContent":"<button class='btn btn-success' id='edit'>Editar</button>", responsivePriority:1,targets:-1},
+            {"data": "antiguedad_ingreso_sep"},
+            {"data": "correo"},
+            {"data": "telefono"},
+            {"data": "celular"}
             /*{
                 "data": null,
                 defaultContent:'<button class="btn btn-success" id="edit">Editar</button><button class="btn btn-danger" id="baja">Baja</button>'
             }*/
-            {"defaultContent":"<button class='btn btn-success' id='edit'>Editar</button>"}
         ],
 
 
@@ -43,9 +44,9 @@ $(document).ready( function () {
     $('#allusers tbody').on('click','button#edit',function(){
         var data = table.row($(this).parents('tr')).data();
         $('#myModal').modal();
-        $.getJSON("getUsuario",{id:data[0]},function(json){
+        $.getJSON("getUsuario",{id:data['id_usuario']},function(json){
             $('#modal-body #foto').attr('src',json.fotografia+'?'+(new Date()).getTime());
-            $('#modal-body #rango option[value='+json.id_rango+']').attr('selected', 'selected');
+            $('#modal-body #rango').html(json.rango);
             $('#modal-header span#old_matricula').text(json.matricula);
             $('#modal-body #matricula').val(json.matricula);
             $('#modal-body #nombre').val(json.nombre);

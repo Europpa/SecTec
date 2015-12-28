@@ -69,8 +69,20 @@ class usersModel extends Model{
 	}
 	public function getUser($id){
 		$datos = array(':id' => $id);
-		$query = 'SELECT matricula,nombre,a_paterno,a_materno,telefono,celular,correo,puesto,fotografia,id_rango
-		FROM usuarios WHERE id_usuario = :id';
+		$query = 'SELECT
+		usr.matricula,
+		usr.nombre,
+		usr.a_paterno,
+		usr.a_materno,
+		usr.telefono,
+		usr.celular,
+		usr.correo,
+		usr.puesto,
+		usr.fotografia,
+		ran.nombre as rango
+		FROM usuarios usr JOIN rangos ran
+		ON usr.id_rango = ran.id_rango
+		WHERE id_usuario = :id';
 		$res = $this->query($query,$datos);
 		$registros = $res->fetch();
 		$row = array(
@@ -83,7 +95,7 @@ class usersModel extends Model{
 			'correo' => $registros['correo'],
 			'puesto' => $registros['puesto'],
 			'fotografia' => PHOTOS . $registros['fotografia'],
-			'id_rango' => $registros['id_rango']
+			'rango' => $registros['rango']
 		);
 		return $row;
 	}
@@ -97,10 +109,8 @@ class usersModel extends Model{
 
 	public function updateUser($data){
 		$datos = array(
-		':matricula' => $data['matricula'],
 		':old_mat' => $data['old_mat'],
 		':photo' => $data['photo'],
-		':rango' => $data['rango'],
 		':puesto' => $data['puesto'],
 		':nombre' => $data['nombre'],
 		':a_paterno' => $data['a_paterno'],
@@ -110,15 +120,13 @@ class usersModel extends Model{
 		':correo' => $data['email']);
 		$query = 'UPDATE usuarios SET
 		fotografia = :photo,
-		id_rango = :rango,
 		puesto = :puesto,
 		nombre = :nombre,
 		a_paterno = :a_paterno,
 		a_materno = :a_materno,
 		telefono = :telefono,
 		celular = :celular,
-		correo = :correo,
-		matricula = :matricula
+		correo = :correo
 		WHERE matricula = :old_mat';
 		$this->query($query,$datos);
 	}

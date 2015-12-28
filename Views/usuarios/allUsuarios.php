@@ -5,6 +5,7 @@
 	<title>Usuarios</title>
 	<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'bootstrap.min.css';?>" type="text/css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Views' . DS . 'datatables' . DS . 'css' . DS . 'dataTables.bootstrap.min.css' ?>">
+	<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'responsive.dataTables.min.css';?>">
 	<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'password.css';?>" type="text/css">
 	<link rel="stylesheet" href="<?php echo BASE_URL.'Views'.DS.'css'.DS.'home.css';?>" type="text/css">
 </head>
@@ -53,31 +54,26 @@
 	</div>
 
 
-	<table id="allusers" class="table table-striped table-bordered">
+	<table id="allusers" class="table table-striped table-bordered display nowrap" cellspacing="0" width="100%">
     <thead>
         <tr>
         	<th>Id</th>
             <th>Matricula</th>
             <th>Nombre</th>
+			<th>Puesto</th>
+			<th>Rango</th>
+			<th>Fecha de Registro</th>
+			<th>Editar</th>
+			<th>Antiguedad en la Sep (A/M/D)</th>
             <th>Correo</th>
             <th>Telefono</th>
             <th>Celular</th>
-            <th>Antiguedad</th>
-            <th>Puesto</th>
-            <th>Rango</th>
-            <th>Fecha de Registro</th>
-            <th>Editar / Baja</th>
         </tr>
     </thead>
 </table>
 </section>
 
 
-<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
-<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jsallusuario.js';?>"></script>
-<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
-<script type="text/javascript" charset="utf8" src="<?php echo BASE_URL . 'Views' . DS . 'datatables' . DS . 'js' . DS . 'jquery.dataTables.min.js' ?>"></script>
-<script type="text/javascript" charset="utf8" src="<?php echo BASE_URL . 'Views' . DS . 'datatables' . DS . 'js' . DS . 'dataTables.bootstrap.js' ?>"></script>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
   	<div class="modal-dialog">
@@ -90,6 +86,10 @@
      		<div class="modal-body" id="modal-body">
 				<form class="form-horizontal" id="frmUser" method="post" enctype="multipart/form-data">
 					<br>
+					<div class="form-group">
+						<label for="rango" class="col-md-3 control-label">Rango:</label>
+						<h4 class="col-md-3"><span class="label label-primary" id="rango"></span></h4></label>
+					</div>
 					<div class="form-group">
 						<label for="foto" class="col-md-3 control-label">Fotografia Actual:</label>
 						<div class="col-md-4">
@@ -105,27 +105,9 @@
 					</div>
 
 					<div class="form-group">
-						<label for="rango" class="col-md-3 control-label">Rango:</label>
-						<div class="col-md-5">
-							<select name="rango" id="rango" class="form-control">
-								<?php foreach ($this->rangos as $val) { ?>
-									<option value="<?php echo $val['id_rango']; ?>">
-								<?php echo $val['nombre']; ?>
-									</option>
-								<?php } ?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
 						<label for="puesto" class="col-md-3 control-label">Puesto:</label>
 						<div class="col-md-5">
 							<input type="text" name="puesto" class="form-control" id="puesto">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="matricula" class="col-md-3 control-label">Matricula:</label>
-						<div class="col-md-5">
-							<input type="text" name="matricula" class="form-control" id="matricula">
 						</div>
 					</div>
 					<div class="form-group">
@@ -175,4 +157,10 @@
   	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 </body>
+<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jquery-2.1.4.min.js';?>"></script>
+<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'jsallusuario.js';?>"></script>
+<script src="<?php echo BASE_URL.'Views'.DS.'js'.DS.'bootstrap.min.js';?>"></script>
+<script type="text/javascript" charset="utf8" src="<?php echo BASE_URL . 'Views' . DS . 'datatables' . DS . 'js' . DS . 'jquery.dataTables.min.js' ?>"></script>
+<script type="text/javascript" charset="utf8" src="<?php echo BASE_URL . 'Views' . DS . 'datatables' . DS . 'js' . DS . 'dataTables.bootstrap.js' ?>"></script>
+<script type="text/javascript" charset="utf8" src="<?php echo BASE_URL . 'Views' . DS . 'js' . DS . 'dataTables.responsive.min.js' ?>"></script>
 </html>
