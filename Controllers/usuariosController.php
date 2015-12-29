@@ -222,7 +222,7 @@ class usuariosController extends BaseController{
         }
 
         if($foto['error'] === 4){
-            $photo = 'default.jpg';
+            $photo = 'default.png';
         }else{
             $name = $foto['name'];
             $info = pathinfo($name);
@@ -314,7 +314,7 @@ class usuariosController extends BaseController{
 			}
 			exit;
 		}
-		
+
 		$nombre = $this->euroval->run('Nombre',trim($_POST['nombre']),array('required','alphabetic'));
 		if(is_array($nombre)){
 			foreach ($nombre as $value) {
