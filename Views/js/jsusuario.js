@@ -1,5 +1,6 @@
 $(document).ready( function () {
     $('#tablita').DataTable({
+        "ordering": false,
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "No se encontro nada",
@@ -27,5 +28,5 @@ $(document).ready( function () {
         ]
 
     });
-    
+
 } );

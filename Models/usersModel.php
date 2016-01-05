@@ -24,10 +24,11 @@ class usersModel extends Model{
 		ran.nombre as rango,
 		usr.fecha_registro
 		FROM usuarios usr JOIN rangos ran
-		ON usr.id_rango = ran.id_rango';
+		ON usr.id_rango = ran.id_rango ORDER BY usr.id_usuario DESC';
 		$resultado = $this->query($query);
 		return $resultado->fetchAll();
 	}
+
 	public function allranges(){
 		$query = 'SELECT
 		ran.id_rango,
@@ -63,7 +64,7 @@ class usersModel extends Model{
 		$datos = array(':matricula' => $data);
 		$query = 'SELECT * FROM usuarios WHERE matricula = :matricula';
 		$res = $this->query($query,$datos);
-		if($res->rowCount() == 1){
+		if($res->rowCount() >= 1){
 			return true;
 		}
 	}

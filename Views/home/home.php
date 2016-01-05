@@ -18,7 +18,7 @@
 				<li><strong>Nombre: </strong><?php echo $this->nombre; ?></li>
 				<li><strong>Rango: </strong><?php echo $this->rango; ?></li>
 			</ul>
-		</div>			
+		</div>
 		<div class="col-md-2">
 			<a href="<?php echo BASE_URL . 'login' . DS . 'cerrarSession'; ?>" class="btn btn-primary" id="cerrar">Cerrar Sesión</a>
 		</div>
@@ -30,7 +30,7 @@
 	<div class="list-group">
 		<a href="" class="list-group-item active">Inicio</a>
 		<a href="<?php echo BASE_URL . 'usuarios'?>" class="list-group-item">Administración de usuarios</a>
-		<a href="" class="list-group-item">Administración de grupos</a>
+		<a href="<?php echo BASE_URL . 'grupos'?>" class="list-group-item">Administración de grupos</a>
 		<a href="" class="list-group-item">Administración de clases</a>
 		<a href="" class="list-group-item">Administración de ciclo escolar</a>
 	</div>

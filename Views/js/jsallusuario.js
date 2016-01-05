@@ -1,6 +1,7 @@
 $(document).ready( function () {
 
     var table = $('#allusers').DataTable({
+        "ordering": false,
         responsive: true,
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",

@@ -12,12 +12,13 @@ $('form#frm-usuario').submit(function(){
 		success: function(res){
 			$('#warning').removeClass();
 			$('#warning').addClass('alert alert-success');
-			$('#warning').html('<strong>Guardado: </strong>' + res.msg);  
+			$('#warning').html('<strong>Guardado: </strong>' + res.msg);
+			setTimeout("location.href='listaUsuarios'",1500 );
 		},
 		error: function(req, status, error){
 			$('#warning').removeClass();
 			$('#warning').addClass('alert alert-danger');
-			$('#warning').html('<strong>Error: </strong>' + req.responseText);  
+			$('#warning').html('<strong>Error: </strong>' + req.responseText);
 		},
 		cache: false,
         contentType: false,

@@ -34,7 +34,7 @@
 	<div class="list-group">
 		<a href="<?php echo BASE_URL . 'home'?>" class="list-group-item">Inicio</a>
 		<a href="<?php echo BASE_URL . 'usuarios'?>" class="list-group-item active">Administración de usuarios</a>
-		<a href="" class="list-group-item">Administración de grupos</a>
+		<a href="<?php echo BASE_URL . 'grupos'?>" class="list-group-item">Administración de grupos</a>
 		<a href="" class="list-group-item">Administración de clases</a>
 		<a href="" class="list-group-item">Administración de ciclo escolar</a>
 	</div>
@@ -45,8 +45,8 @@
   			<div class="container-fluid">
     			<div class="navbar-header">
     				<div class="navbar-brand">Seleccione:</div>
-    				<a href="<?php echo BASE_URL . 'usuarios'; ?>" class="btn btn-info navbar-btn active"><span class="glyphicon glyphicon-info-sign"></span> Ultimos usuarios registrados</a>
-    				<a href="<?php echo BASE_URL . 'usuarios/listaUsuarios'; ?>" class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-search"></span> Listar todos los usuarios</a>
+    				<a href="<?php echo BASE_URL . 'usuarios'; ?>" class="btn btn-info navbar-btn"><span class="glyphicon glyphicon-info-sign"></span> Ultimos usuarios registrados</a>
+    				<a href="<?php echo BASE_URL . 'usuarios/listaUsuarios'; ?>" class="btn btn-primary navbar-btn active"><span class="glyphicon glyphicon-search"></span> Listar todos los usuarios</a>
     				<a href="<?php echo BASE_URL . 'usuarios/altaUsuarios'; ?>" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-plus"></span> Alta Usuario</a>
     			</div>
 	  		</div>
@@ -150,8 +150,8 @@
       		</div>
 			<div class="hidden alert alert-info col-md-10 col-md-offset-1" role="alert" id="warning"></div>
 	      	<div class="modal-footer">
-	        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        	<button type="button" class="btn btn-primary" id="update">Save changes</button>
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        	<button type="button" class="btn btn-primary" id="update">Guardar los Cambios</button>
 	      	</div>
     	</div><!-- /.modal-content -->
   	</div><!-- /.modal-dialog -->
