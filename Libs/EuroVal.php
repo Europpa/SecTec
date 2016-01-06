@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * EuroVal - Libreria de validacion y saneamiento de datos PHP
 * @author      Luis Pastén (https://www.facebook.com/luispastenpuntonet)
@@ -11,13 +11,13 @@ class EUROVAL{
 	protected $errors = array();
 	protected $validadores = array();
 	protected $filtros = array();
-	
+
 	/**
 	 * Funcion principal para correr los metodos de filtrado y validado
 	 * @param  string $field          Nombre del campo
 	 * @param  mixed  $data        	  Dato del formulario
 	 * @param  array  $validaciones   Array de validaciones a realizar
-	 * @param  array  $filtros        Array de filtros a realizar		
+	 * @param  array  $filtros        Array de filtros a realizar
 	 * @return mixed                  Retorna true o false
 	 */
 	public function run($field, $data, array $validaciones, array $filtros = array()){
@@ -31,13 +31,13 @@ class EUROVAL{
 		}
 		return $validate_data;
 	}
-	
+
 	/**
 	 * Funcion principal para el filtrado de datos
 	 * @param  mixed $input    Valor del input a filtrar
 	 * @param  array  $filtros Filtros elegidos
 	 * @return mixed           Regresa el dato con los filtros aplicados
-	 * @throws exception       Filtros no existentes 
+	 * @throws exception       Filtros no existentes
 	 */
 	protected function filtrar($input, array $filtros = array()){
 		foreach ($filtros as $filtro) {
@@ -68,7 +68,7 @@ class EUROVAL{
 				$vali = explode(',', $validador);
  				$method = $vali[0];
 				for($n = 1; $n <= count($vali) - 1; $n++){
-					array_push($params, $vali[$n]); 
+					array_push($params, $vali[$n]);
 				}
 				$params = implode(',', $params);
  				if(is_callable(array($this,$method))){
@@ -89,14 +89,14 @@ class EUROVAL{
 					throw new Exception('No existe el validador');
 				}
 			}
-		}	
+		}
 		return count($this->errors) > 0 ? false : $input;
 	}
 
 	/*--------------------------------------------------------------------*/
 	/*--------------------------VALIDADORES-------------------------------*/
 	/*--------------------------------------------------------------------*/
-	
+
 	/**
 	 * Funcion que verifica si el campo no es vacio o nulo
 	 * @param  Mixed  $input    Dato del formulario
@@ -114,8 +114,29 @@ class EUROVAL{
 		}
 	}
 
+
 	/**
-	 * Funcion que verifica que el texto es de tipo alphanumerico								
+	 * Funcion que verifica que el texto es de tipo alphanumerico con simbolos
+	 * @param  Mixed  $input    Dato del formulario
+	 * @param  string $field    Nombre del campo
+	 * @param  array  $params   Parametros
+	 * @return mixed            True o array de errores
+	 */
+	protected function alpha_numeric_symbols($input, $field, $params = null){
+		if(empty($input)){
+			return true;
+		}
+		if(preg_match("/^([a-z0-9ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ#\-\_\/\(\)\,\.\&\s])+$/i", $input)){
+			return true;
+		}else{
+			return array(
+				'error' => 'alpha_numeric_symbols',
+				'field' => $field);
+		}
+	}
+
+	/**
+	 * Funcion que verifica que el texto es de tipo alphanumerico
 	 * @param  Mixed  $input    Dato del formulario
 	 * @param  string $field    Nombre del campo
 	 * @param  array  $params   Parametros
@@ -126,12 +147,12 @@ class EUROVAL{
 			return true;
 		}
 		if(preg_match("/^([a-z0-9ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ])+$/i", $input)){
-			return true;	
+			return true;
 		}else{
 			return array(
 				'error' => 'alpha_numeric',
-				'field' => $field);			
-		}		
+				'field' => $field);
+		}
 	}
 
 	/**
@@ -139,8 +160,8 @@ class EUROVAL{
 	 * @param  Mixed  $input    Dato del formulario
 	 * @param  string $field    Nombre del campo
 	 * @param  array  $params   Parametros
-	 * @return mixed       True o array de errores  
-	 */	
+	 * @return mixed       True o array de errores
+	 */
 	protected function alpha_spaces($input, $field, $params = null){
 		if(empty($input)){
 			return true;
@@ -213,7 +234,7 @@ class EUROVAL{
 				'error' => 'max_len',
 				'len' => $params,
 				'field' => $field);
-		}	
+		}
 	}
 
 	/**
@@ -324,7 +345,7 @@ class EUROVAL{
 	 * @param  file   $input  Archivo
 	 * @param  string $field  Nombre del archivo
 	 * @param  string $params Cadena de parametros separados por ","
-	 * @return mixed          Retorna true o array 
+	 * @return mixed          Retorna true o array
 	 */
 	protected function file_validate($input, $field, $params = null){
 		if($input['error'] == 4){
@@ -336,12 +357,12 @@ class EUROVAL{
 			if(!$input['error'] > 0){
                	if(in_array($input['type'], $formatos)){
             		if($input['size'] <= ($size * 1024)){
-	                	return true; 
+	                	return true;
             		}
             		return array(
 						'error' => 'file_validate_size',
 						'field' => $field
-					);	
+					);
             	}
             	return array(
 				'error' => 'file_validate_format',
@@ -361,12 +382,12 @@ class EUROVAL{
 
 	/**
 	 * Funcion que sanea las variables de tipo string quitando caracteres especiales
-	 * @param  string $input Dato del formulario 
+	 * @param  string $input Dato del formulario
 	 * @return string        Dato saneado
 	 */
 	protected function filter_string($input){
 		return filter_var(trim($input),FILTER_SANITIZE_STRING);
-	}	
+	}
 
 	/**
 	 * Sanea variables que contengan tags html conviertiendolas en entidades de texto
@@ -398,7 +419,7 @@ class EUROVAL{
 	/*--------------------------------------------------------------------*/
 	/*------------------------------ERRORES-------------------------------*/
 	/*--------------------------------------------------------------------*/
-	
+
 	/**
 	 * Funsion que convierte los errores a legibles
 	 * @param  array  $errors Array de errores y parametros necesarios
@@ -415,10 +436,13 @@ class EUROVAL{
 					$resp[$val['error']] = 'La longitud del campo '.$val['field'].' no puede ser menor a ' .$val['len']. ' caracteres';
 				break;
 				case 'max_len':
-					$resp[$val['error']] = 'La longitud del campo '.$val['field'].' no puede ser mayor a ' .$val['len']. ' caracteres';					
+					$resp[$val['error']] = 'La longitud del campo '.$val['field'].' no puede ser mayor a ' .$val['len']. ' caracteres';
 				break;
 				case 'alpha_numeric':
 					$resp[$val['error']] = 'El campo '.$val['field'].' solo puede contener caracteres alfanumericos';
+				break;
+				case 'alpha_numeric_symbols':
+					$resp[$val['error']] = 'El campo '.$val['field'].' solo puede contener caracteres alfanumericos y simbolos';
 				break;
 				case 'alpha_spaces':
 					$resp[$val['error']] = 'El campo '.$val['field'].' solo puede contener caracteres alfanumericos con espacios';
@@ -450,8 +474,8 @@ class EUROVAL{
 				case 'file_validate_size':
 					$resp[$val['error']] = 'El archivo '.$val['field'].' es muy grande';
 				break;
-				
-			}	
+
+			}
 		}
 		return $resp;
 	}

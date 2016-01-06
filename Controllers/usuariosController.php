@@ -38,13 +38,15 @@ class usuariosController extends BaseController{
 	}
 	public function allusers(){
 		$users = $this->model->allusers();
-
 		$a = array();
 		foreach ($users as $user) {
-			$ingreso = new DateTime($user['antiguedad_ingreso_sep']);
+			$ingreso_sep = new DateTime($user['antiguedad_ingreso_sep']);
+			$ingreso_tecs = new DateTime($user['ingreso_tecs']);
 			$hoy = new DateTime("now");
-			$intervalo = date_diff($ingreso,$hoy);
-			$fechasep = $intervalo->format("%Y/%M/%D");
+			$intervalo_sep = date_diff($ingreso_sep,$hoy);
+			$intervalo_tecs = date_diff($ingreso_tecs,$hoy);
+			$fechasep = $intervalo_sep->format("%Y/%M/%D");
+			$fechatecs = $intervalo_tecs->format("%Y/%M/%D");
 			array_push($a,array(
 				'id_usuario' => $user['id_usuario'],
 				'matricula' => $user['matricula'],
@@ -56,6 +58,11 @@ class usuariosController extends BaseController{
 				'puesto' => $user['puesto'],
 				'rango' => $user['rango'],
 				'fecha_registro' => $user['fecha_registro'],
+				'curp' => $user['CURP'],
+				'rfc' => $user['RFC'],
+				'fecha_nacimiento' => $user['fecha_nacimiento'],
+				'domicilio' => $user['domicilio'],
+				'ingreso_tecs' => $fechatecs
 			));
 		}
         echo json_encode($a);
@@ -122,12 +129,30 @@ class usuariosController extends BaseController{
             throw new Exception("Datos incorrectos");
             exit;
         }
-
         if(!isset($_POST['a_materno'])){
             throw new Exception("Datos incorrectos");
             exit;
         }
-
+		if(!isset($_POST['fecha_tecs'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
+		if(!isset($_POST['curp'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
+		if(!isset($_POST['fecha_nacimiento'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
+		if(!isset($_POST['rfc'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
+		if(!isset($_POST['domicilio'])){
+            throw new Exception("Datos incorrectos");
+            exit;
+        }
         if(!isset($_FILES['foto'])){
             throw new Exception("Datos incorrectos");
             exit;
@@ -197,6 +222,22 @@ class usuariosController extends BaseController{
             exit;
         }
 
+		$curp = $this->euroval->run('CURP',$_POST['curp'],array('required','alpha_numeric','max_len,30'));
+		if(is_array($curp)){
+            foreach ($curp as $value) {
+                throw new Exception($value);
+            }
+            exit;
+        }
+
+		$rfc = $this->euroval->run('RFC',$_POST['rfc'],array('required','alpha_numeric_symbols','max_len,30'));
+		if(is_array($rfc)){
+            foreach ($rfc as $value) {
+                throw new Exception($value);
+            }
+            exit;
+        }
+
         $email = $this->euroval->run('Email',trim($_POST['correo']),array('required','email'));
         if(is_array($email)){
             foreach ($email as $value) {
@@ -205,7 +246,31 @@ class usuariosController extends BaseController{
             exit;
         }
 
-        $fecha = $this->euroval->run('Fecha',trim($_POST['fecha']),array('required','date,Y-m-d'));
+		$fecha_nacimiento = $this->euroval->run('Fecha de nacimiento',trim($_POST['fecha_nacimiento']),array('required','date,Y-m-d'));
+        if(is_array($fecha_nacimiento)){
+            foreach ($fecha_nacimiento as $value) {
+                throw new Exception($value);
+            }
+            exit;
+        }
+
+		$domicilio = $this->euroval->run('domicilio',trim($_POST['domicilio']),array('required','alpha_numeric_symbols','max_len,200'));
+		if(is_array($domicilio)){
+            foreach ($domicilio as $value) {
+                throw new Exception($value);
+            }
+            exit;
+        }
+
+		$fecha_tecs = $this->euroval->run('Fecha Tecs',trim($_POST['fecha_tecs']),array('required','date,Y-m-d'));
+		if(is_array($fecha_tecs)){
+            foreach ($fecha_tecs as $value) {
+                throw new Exception($value);
+            }
+            exit;
+        }
+
+        $fecha = $this->euroval->run('Fecha Sep',trim($_POST['fecha']),array('required','date,Y-m-d'));
         if(is_array($fecha)){
             foreach ($fecha as $value) {
                 throw new Exception($value);
@@ -248,7 +313,12 @@ class usuariosController extends BaseController{
             'celular' => $celular,
             'email' => $email,
             'foto' => $photo,
-            'fecha' => $fecha
+            'fecha' => $fecha,
+			'fecha_tecs' => $fecha_tecs,
+			'curp' => $curp,
+			'fecha_nacimiento' => $fecha_nacimiento,
+			'rfc' => $rfc,
+			'domicilio' => $domicilio
             );
 
         if($this->model->existeUsuario($matricula)){
@@ -291,6 +361,22 @@ class usuariosController extends BaseController{
 			exit;
 		}
 		if(!isset($_POST['correo'])){
+			throw new Exception("Datos incorrectos");
+			exit;
+		}
+		if(!isset($_POST['curp'])){
+			throw new Exception("Datos incorrectos");
+			exit;
+		}
+		if(!isset($_POST['fecha_nacimiento'])){
+			throw new Exception("Datos incorrectos");
+			exit;
+		}
+		if(!isset($_POST['rfc'])){
+			throw new Exception("Datos incorrectos");
+			exit;
+		}
+		if(!isset($_POST['domicilio'])){
 			throw new Exception("Datos incorrectos");
 			exit;
 		}
@@ -363,6 +449,38 @@ class usuariosController extends BaseController{
 			exit;
 		}
 
+		$curp = $this->euroval->run('CURP',$_POST['curp'],array('required','alpha_numeric','max_len,30'));
+		if(is_array($curp)){
+			foreach ($curp as $value) {
+				throw new Exception($value);
+			}
+			exit;
+		}
+
+		$rfc = $this->euroval->run('RFC',$_POST['rfc'],array('required','alpha_numeric_symbols','max_len,30'));
+		if(is_array($rfc)){
+			foreach ($rfc as $value) {
+				throw new Exception($value);
+			}
+			exit;
+		}
+
+		$fecha_nacimiento = $this->euroval->run('Fecha de nacimiento',trim($_POST['fecha_nacimiento']),array('required','date,Y-m-d'));
+		if(is_array($fecha_nacimiento)){
+			foreach ($fecha_nacimiento as $value) {
+				throw new Exception($value);
+			}
+			exit;
+		}
+
+		$domicilio = $this->euroval->run('domicilio',trim($_POST['domicilio']),array('required','alpha_numeric_symbols','max_len,200'));
+		if(is_array($domicilio)){
+			foreach ($domicilio as $value) {
+				throw new Exception($value);
+			}
+			exit;
+		}
+
         /*VALIDAR FOTOGRAFIA*//*VALIDAR FOTOGRAFIA*//*VALIDAR FOTOGRAFIA*/
         $foto = $this->euroval->run('Fotografia',$_FILES['newfoto'],array('file_validate,1024,image/png|image/jpeg'));
         if(!array_key_exists('name',$foto) && !array_key_exists('type', $foto)){
@@ -418,7 +536,11 @@ class usuariosController extends BaseController{
 			'a_materno' => $a_materno,
 			'telefono' => $telefono,
 			'celular' => $celular,
-			'email' => $email);
+			'email' => $email,
+			'curp' => $curp,
+			'rfc' => $rfc,
+			'fecha_nacimiento' => $fecha_nacimiento,
+			'domicilio' => $domicilio);
 
 		$this->model->updateUser($datos);
 		$response = array('msg' => 'Datos Actualizados');

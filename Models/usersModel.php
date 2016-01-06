@@ -22,7 +22,12 @@ class usersModel extends Model{
 		usr.antiguedad_ingreso_sep,
 		usr.puesto,
 		ran.nombre as rango,
-		usr.fecha_registro
+		usr.fecha_registro,
+		usr.CURP,
+		usr.RFC,
+		usr.fecha_nacimiento,
+		usr.domicilio,
+		usr.ingreso_tecs
 		FROM usuarios usr JOIN rangos ran
 		ON usr.id_rango = ran.id_rango ORDER BY usr.id_usuario DESC';
 		$resultado = $this->query($query);
@@ -53,11 +58,15 @@ class usersModel extends Model{
 			':puesto' => $data['puesto'],
 			':foto' => $data['foto'],
 			':range' => $data['rango'],
-			);
+			':fecha_tecs' => $data['fecha_tecs'],
+			':curp' => $data['curp'],
+			':fecha_nacimiento' => $data['fecha_nacimiento'],
+			':rfc' => $data['rfc'],
+			':domicilio' => $data['domicilio']);
 		$query = 'INSERT INTO usuarios
-			(matricula,contrasena,change_pass,nombre,a_paterno,a_materno,telefono,celular,correo,antiguedad_ingreso_sep,puesto,fotografia,id_rango)
+			(matricula,contrasena,change_pass,nombre,a_paterno,a_materno,telefono,celular,correo,antiguedad_ingreso_sep,puesto,fotografia,id_rango,CURP,RFC,fecha_nacimiento,domicilio,ingreso_tecs)
 			VALUES
-			(:matricula,:contrasena,:change_pass,:nombre,:a_paterno,:a_materno,:telefono,:celular,:email,:fecha,:puesto,:foto,:range)';
+			(:matricula,:contrasena,:change_pass,:nombre,:a_paterno,:a_materno,:telefono,:celular,:email,:fecha,:puesto,:foto,:range,:curp,:rfc,:fecha_nacimiento,:domicilio,:fecha_tecs)';
 		$resultado = $this->query($query,$datos);
 	}
 	public function existeUsuario($data){
@@ -80,7 +89,12 @@ class usersModel extends Model{
 		usr.correo,
 		usr.puesto,
 		usr.fotografia,
-		ran.nombre as rango
+		ran.nombre as rango,
+		usr.CURP,
+		usr.RFC,
+		usr.fecha_nacimiento,
+		usr.domicilio,
+		usr.ingreso_tecs
 		FROM usuarios usr JOIN rangos ran
 		ON usr.id_rango = ran.id_rango
 		WHERE id_usuario = :id';
@@ -96,7 +110,12 @@ class usersModel extends Model{
 			'correo' => $registros['correo'],
 			'puesto' => $registros['puesto'],
 			'fotografia' => PHOTOS . $registros['fotografia'],
-			'rango' => $registros['rango']
+			'rango' => $registros['rango'],
+			'curp' => $registros['CURP'],
+			'rfc' => $registros['RFC'],
+			'fecha_nacimiento' => $registros['fecha_nacimiento'],
+			'domicilio' => $registros['domicilio'],
+			'fecha_tecs' => $registros['ingreso_tecs']
 		);
 		return $row;
 	}
@@ -118,7 +137,12 @@ class usersModel extends Model{
 		':a_materno' => $data['a_materno'],
 		':telefono' => $data['telefono'],
 		':celular' => $data['celular'],
-		':correo' => $data['email']);
+		':correo' => $data['email'],
+		':rfc' => $data['rfc'],
+		':curp' => $data['curp'],
+		':fecha_nacimiento' => $data['fecha_nacimiento'],
+		':domicilio' => $data['domicilio']
+		);
 		$query = 'UPDATE usuarios SET
 		fotografia = :photo,
 		puesto = :puesto,
@@ -127,7 +151,11 @@ class usersModel extends Model{
 		a_materno = :a_materno,
 		telefono = :telefono,
 		celular = :celular,
-		correo = :correo
+		correo = :correo,
+		CURP = :curp,
+		RFC = :rfc,
+		fecha_nacimiento = :fecha_nacimiento,
+		domicilio = :domicilio
 		WHERE matricula = :old_mat';
 		$this->query($query,$datos);
 	}

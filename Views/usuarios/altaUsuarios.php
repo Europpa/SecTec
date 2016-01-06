@@ -64,9 +64,9 @@
 					<?php } ?>
 				</select>
 			</div>
-			<label for="telefono" class="col-md-2 control-label">Telefono:</label>
+			<label for="curp" class="col-md-2 control-label">CURP:</label>
 			<div class="col-md-3">
-				<input type="text" name="telefono" class="form-control" id="telefono" tabindex="6">
+				<input type="text" name="curp" class="form-control" id="curp" tabindex="8">
 			</div>
 		</div>
 
@@ -76,9 +76,9 @@
 				<input type="text" name="puesto" class="form-control" id="puesto" tabindex="1">
 			</div>
 
-			<label for="celular" class="col-md-2 control-label">Celular:</label>
+			<label for="rfc" class="col-md-2 control-label">RFC:</label>
 			<div class="col-md-3">
-				<input type="text" name="celular" class="form-control" id="celular" tabindex="7">
+				<input type="text" name="rfc" class="form-control" id="rfc" tabindex="9">
 			</div>
 		</div>
 
@@ -90,7 +90,7 @@
 
 			<label for="correo" class="col-md-2 control-label">Email:</label>
 			<div class="col-md-3">
-				<input type="email" name="correo" class="form-control" id="correo" tabindex="8">
+				<input type="email" name="correo" class="form-control" id="correo" tabindex="10">
 			</div>
 		</div>
 
@@ -99,9 +99,9 @@
 			<div class="col-md-3">
 				<input type="text" name="nombre" class="form-control" id="nombre" tabindex="3">
 			</div>
-			<label for="foto" class="col-md-2 control-label">Fotografia:</label>
+			<label for="fecha_nacimiento" class="col-md-2 control-label">Fecha de nacimiento:</label>
 			<div class="col-md-3">
-				<input type="file" name="foto" class="form-control" id="foto" tabindex="9">
+				<input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" tabindex="11">
 			</div>
 		</div>
 
@@ -110,9 +110,9 @@
 			<div class="col-md-3">
 				<input type="text" name="a_paterno" class="form-control" id="a_paterno" tabindex="4">
 			</div>
-			<label for="fecha" class="col-md-2 control-label">Fecha de ingreso a la SEP:</label>
+			<label for="domicilio" class="col-md-2 control-label">Domicilio:</label>
 			<div class="col-md-3">
-				<input type="date" name="fecha" class="form-control" id="fecha" tabindex="10">
+				<input type="text" name="domicilio" class="form-control" id="domicilio" tabindex="12">
 			</div>
 		</div>
 
@@ -121,9 +121,37 @@
 			<div class="col-md-3">
 				<input type="text" name="a_materno" class="form-control" id="a_materno" tabindex="5">
 			</div>
-			<div class="col-md-3 col-md-offset-2">
-				<button class="btn btn-primary btn-block" tabindex="11">Guardar</button>
+			<label for="foto" class="col-md-2 control-label">Fotografia:</label>
+			<div class="col-md-3">
+				<input type="file" name="foto" class="form-control" id="foto" tabindex="13">
 			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="telefono" class="col-md-2 control-label">Telefono:</label>
+			<div class="col-md-3">
+				<input type="text" name="telefono" class="form-control" id="telefono" tabindex="6">
+			</div>
+			<label for="fecha_tecs" class="col-md-2 control-label">Ingreso a TEC's:</label>
+			<div class="col-md-3">
+				<input type="date" name="fecha_tecs" class="form-control" id="fecha_tecs" tabindex="14">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="celular" class="col-md-2 control-label">Celular:</label>
+			<div class="col-md-3">
+				<input type="text" name="celular" class="form-control" id="celular" tabindex="7">
+			</div>
+			<label for="fecha" class="col-md-2 control-label">Fecha de ingreso a la SEP:</label>
+			<div class="col-md-3">
+				<input type="date" name="fecha" class="form-control" id="fecha" tabindex="15">
+			</div>
+		</div>
+
+		<!-- BOTON BTN-->
+		<div class="col-md-3 col-md-offset-2">
+			<button class="btn btn-primary btn-block" tabindex="16">Guardar</button>
 		</div>
 	</form>
 	<div class="col-md-4 col-md-offset-3">

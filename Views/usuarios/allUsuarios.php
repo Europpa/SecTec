@@ -65,9 +65,14 @@
 			<th>Fecha de Registro</th>
 			<th>Editar</th>
 			<th>Antiguedad en la Sep (A/M/D)</th>
+			<th>Ingreso a TEC'S (A/M/D)</th>
             <th>Correo</th>
             <th>Telefono</th>
             <th>Celular</th>
+            <th>CURP</th>
+            <th>RFC</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Domicilio</th>
         </tr>
     </thead>
 </table>
@@ -144,6 +149,30 @@
 						<label for="correo" class="col-md-3 control-label">Correo:</label>
 						<div class="col-md-5">
 							<input type="text" name="correo" class="form-control" id="correo">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="curp" class="col-md-3 control-label">CURP:</label>
+						<div class="col-md-5">
+							<input type="text" name="curp" class="form-control" id="curp">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="rfc" class="col-md-3 control-label">RFC:</label>
+						<div class="col-md-5">
+							<input type="text" name="rfc" class="form-control" id="rfc">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="fecha_nacimiento" class="col-md-3 control-label">Fecha de Nacimiento:</label>
+						<div class="col-md-5">
+							<input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="domicilio" class="col-md-3 control-label">Domicilio:</label>
+						<div class="col-md-5">
+							<input type="text" name="domicilio" class="form-control" id="domicilio">
 						</div>
 					</div>
 				</form>

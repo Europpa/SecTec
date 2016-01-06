@@ -30,9 +30,14 @@ $(document).ready( function () {
             {"data": "fecha_registro"},
             {"defaultContent":"<button class='btn btn-success' id='edit'>Editar</button>", responsivePriority:1,targets:-1},
             {"data": "antiguedad_ingreso_sep"},
+            {"data": "ingreso_tecs"},
             {"data": "correo"},
             {"data": "telefono"},
-            {"data": "celular"}
+            {"data": "celular"},
+            {"data": "curp"},
+            {"data": "rfc"},
+            {"data": "fecha_nacimiento"},
+            {"data": "domicilio"}
             /*{
                 "data": null,
                 defaultContent:'<button class="btn btn-success" id="edit">Editar</button><button class="btn btn-danger" id="baja">Baja</button>'
@@ -57,6 +62,10 @@ $(document).ready( function () {
             $('#modal-body #celular').val(json.celular);
             $('#modal-body #correo').val(json.correo);
             $('#modal-body #puesto').val(json.puesto);
+            $('#modal-body #curp').val(json.curp);
+            $('#modal-body #rfc').val(json.rfc);
+            $('#modal-body #fecha_nacimiento').val(json.fecha_nacimiento);
+            $('#modal-body #domicilio').val(json.domicilio);
         });
     });
 
